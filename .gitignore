@@ -1,0 +1,6 @@
+
+# ignore generated data, too big...
+out/
+
+#... as well as the flattened data
+flat_csv/
