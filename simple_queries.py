@@ -1,6 +1,5 @@
 
-from helper import *
-import random
+from sample import *
 
 CSV_DIR = "flat_csv"
 OUTPUT_DIR = "queries"
@@ -25,7 +24,7 @@ OUTPUT_DIR = "queries"
 # browser, and city of residence.
 # 
 # Queries of form personId: <$personId>
-def generate_query1 ( num_queries: int ):
+def generate_simple_query1 ( num_queries: int, csv_dir: str = CSV_DIR ):
     # generate num_queries random $personIds
     personIds = simple_sample (CSV_DIR, "Person", "id", num_queries, 1)
     # format queries and return
@@ -41,7 +40,7 @@ def generate_query1 ( num_queries: int ):
 # Message, i.e. that Message will appear twice in that result.
 #
 # Queries of form personId: <$personId>
-def generate_query2 ( num_queries: int ):
+def generate_simple_query2 ( num_queries: int, csv_dir: str = CSV_DIR ):
     # same as query 1, just generate num_queries random $personIds
     personIds = simple_sample ( CSV_DIR, "Person", "id", num_queries, 1 )
     # format queries and return
@@ -55,7 +54,7 @@ def generate_query2 ( num_queries: int ):
 # became friends.
 #
 # Queries of form personId: <$personId>
-def generate_query3 ( num_queries: int ):
+def generate_simple_query3 ( num_queries: int, csv_dir: str = CSV_DIR ):
     # same as queries 1 and 2, just generate num_queries random $personIds
     personIds = simple_sample ( CSV_DIR, "Person", "id", num_queries, 1 )
     # format queries and return
@@ -68,7 +67,7 @@ def generate_query3 ( num_queries: int ):
 # Given a Message with ID $messageId, retrieve its content and creation date.
 #
 # Queries of form messageId: <$messageId>
-def generate_query4 ( num_queries: int ):
+def generate_simple_query4 ( num_queries: int, csv_dir: str = CSV_DIR ):
     # generate num_queries random $messageIds - either the IDs of posts or comments
     messageIds = simple_sample_multifile ( CSV_DIR, ["Comment", "Post"], ["id", "id"], num_queries, 1 )
     # format queries and return
@@ -81,7 +80,7 @@ def generate_query4 ( num_queries: int ):
 # Given a Message with ID $messageId, retrieve its author.
 #
 # Queries of form messageId: <$messageId>
-def generate_query5 ( num_queries: int ):
+def generate_simple_query5 ( num_queries: int, csv_dir: str = CSV_DIR ):
     # generate num_queries random $messageIds - either the IDs of posts or comments
     messageIds = simple_sample_multifile ( CSV_DIR, ["Comment", "Post"], ["id", "id"], num_queries, 1 )
     # format queries and return
@@ -95,7 +94,7 @@ def generate_query5 ( num_queries: int ):
 # Forum containing the original Post in the thread which the Comment is replying to.
 #
 # Queries of form messageId: <$messageId>
-def generate_query6 ( num_queries: int ):
+def generate_simple_query6 ( num_queries: int, csv_dir: str = CSV_DIR ):
     # generate num_queries random $messageIds - either the IDs of posts or comments
     messageIds = simple_sample_multifile ( CSV_DIR, ["Comment", "Post"], ["id", "id"], num_queries, 1 )
     # format queries and return
@@ -111,13 +110,10 @@ def generate_query6 ( num_queries: int ):
 # False for knows flag.
 #
 # Queries of form messageId: <$messageId>
-def generate_query7 ( num_queries: int ):
+def generate_simple_query7 ( num_queries: int, csv_dir: str = CSV_DIR ):
     # generate num_queries random $messageIds - either the IDs of posts or comments
     messageIds = simple_sample_multifile ( CSV_DIR, ["Comment", "Post"], ["id", "id"], num_queries, 1 )
     # format queries and return
     queries = format_query_list ( ["messageId"] , [messageIds] )
     return queries
 
-
-rows = generate_query7 (10)
-print(rows)

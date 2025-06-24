@@ -130,9 +130,10 @@ def edge_lookup (
     return list(matches)
 
 
-######################################
-# Functions for formatting query CSV #
-######################################
+#################################################################
+# Functions for formatting output of query generation functions #
+#################################################################
+
 
 """
 Format a list of queries from a list of parameter names and a matrix of values.
